@@ -2,6 +2,8 @@ import React from "react";
 import classes from "./Categories.module.css";
 import Category from "./Category";
 
+import { useSelector } from "react-redux";
+
 const categories = [
   {
     id: 9,
@@ -96,8 +98,12 @@ const categories = [
 ];
 
 const Categories = () => {
+  const themeColor = useSelector((state) => state.setting.themeColor);
   return (
-    <div className={classes.categoriesContainer}>
+    <div
+      className={classes.categoriesContainer}
+      style={{ border: `10px solid ${themeColor}` }}
+    >
       {categories.map((category) => (
         <Category
           key={category.id}

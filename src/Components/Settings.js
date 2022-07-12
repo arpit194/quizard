@@ -1,19 +1,28 @@
 import React, { useEffect, useRef, useState } from "react";
 import classes from "./Settings.module.css";
+import { useSelector, useDispatch } from "react-redux";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGear,
   faVolumeUp,
+  faVolumeMute,
   faFaceMeh,
   faFaceSmile,
   faFaceSurprise,
 } from "@fortawesome/free-solid-svg-icons";
+import { settingActions } from "../store/settings";
+
+const colors = ["#264653", "#2a9d8f", "#e9c46a", "#f4a261", "#e76f51"];
 
 const Settings = () => {
   const settings = useRef();
   const [open, setOpen] = useState(false);
   const [rotate, setRotate] = useState(false);
+  const themeColor = useSelector((state) => state.setting.themeColor);
+  const difficulty = useSelector((state) => state.setting.difficulty);
+  const sound = useSelector((state) => state.setting.sound);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setOpen(false);
@@ -43,27 +52,75 @@ const Settings = () => {
         <div
           className={`${classes.settingsContainer} ${classes.openSettings}`}
           ref={settings}
+          style={{ border: `10px solid ${themeColor}` }}
         >
           <div className={classes.settingsDisplay}>
             <div className={classes.settingsControl}>
-              <span>Sound:</span>
-              <FontAwesomeIcon icon={faVolumeUp} />
+              {sound ? (
+                <FontAwesomeIcon
+                  icon={faVolumeUp}
+                  className={classes.icon}
+                  style={{ backgroundColor: themeColor }}
+                  onClick={() => {
+                    dispatch(settingActions.setSound(false));
+                  }}
+                />
+              ) : (
+                <FontAwesomeIcon
+                  icon={faVolumeMute}
+                  className={classes.icon}
+                  style={{ backgroundColor: themeColor }}
+                  onClick={() => {
+                    dispatch(settingActions.setSound(true));
+                  }}
+                />
+              )}
             </div>
             <div className={classes.settingsControl}>
-              <span>Difficulty:</span>
-              <FontAwesomeIcon icon={faFaceSmile} />
-              <FontAwesomeIcon icon={faFaceMeh} />
-              <FontAwesomeIcon icon={faFaceSurprise} />
+              <FontAwesomeIcon
+                icon={faFaceSmile}
+                className={`${classes.icon} ${
+                  difficulty === "Easy" && classes.activeIcon
+                }`}
+                style={{ backgroundColor: themeColor }}
+                onClick={() => {
+                  dispatch(settingActions.setDifficulty("Easy"));
+                }}
+              />
+              <FontAwesomeIcon
+                icon={faFaceMeh}
+                className={`${classes.icon} ${
+                  difficulty === "Medium" && classes.activeIcon
+                }`}
+                style={{ backgroundColor: themeColor }}
+                onClick={() => {
+                  dispatch(settingActions.setDifficulty("Medium"));
+                }}
+              />
+              <FontAwesomeIcon
+                icon={faFaceSurprise}
+                className={`${classes.icon} ${
+                  difficulty === "Hard" && classes.activeIcon
+                }`}
+                style={{ backgroundColor: themeColor }}
+                onClick={() => {
+                  dispatch(settingActions.setDifficulty("Hard"));
+                }}
+              />
             </div>
             <div className={classes.settingsControl}>
-              <div className={classes.themeColor}></div>
-              <div className={classes.themeColor}></div>
-              <div className={classes.themeColor}></div>
-              <div className={classes.themeColor}></div>
-              <div
-                className={`${classes.themeColor} ${classes.activeTheme}`}
-              ></div>
-              <div className={classes.themeColor}></div>
+              {colors.map((color) => (
+                <div
+                  key={color}
+                  className={`${classes.themeColor} ${
+                    themeColor === color && classes.activeTheme
+                  }`}
+                  style={{ backgroundColor: color, color: color }}
+                  onClick={() => {
+                    dispatch(settingActions.setThemeColor(color));
+                  }}
+                ></div>
+              ))}
             </div>
           </div>
         </div>

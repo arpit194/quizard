@@ -6,7 +6,7 @@
   --theme-yellow: #e9c46a;
   --theme-orange: #f4a261;
   --theme-red: #e76f51;
-  --darkback: #000;
+  --darkback: #14213d;
   --white: #fff;
 }
 
@@ -57,7 +57,6 @@ a:not([class]) {
 /* Make images easier to work with */
 img,
 picture {
-  max-width: 100%;
   display: block;
 }
 

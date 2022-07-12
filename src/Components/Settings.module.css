@@ -40,12 +40,14 @@
   position: absolute;
   width: 250px;
   aspect-ratio: 1;
-  background: var(--white);
   border-radius: 30px;
   right: 0;
   top: 60px;
   overflow: hidden;
   z-index: 100;
+  transition: 0.25s;
+  background: var(--white);
+  box-shadow: 0 0 5px 0px #000;
 }
 
 .openSettings {
@@ -60,23 +62,41 @@
   width: 100%;
   aspect-ratio: 1;
   padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .settingsControl {
   display: flex;
+  justify-content: space-between;
+  font-size: 30px;
 }
 
 .themeColor {
   border-radius: 50%;
-  width: 20px;
+  width: 30px;
   aspect-ratio: 1;
-  background-color: var(--theme-green);
+  transition: 0.25s;
+  cursor: pointer;
 }
 
 .themeColor:hover {
-  box-shadow: 0 0 0 2px white, 0 0 0 4px red;
+  box-shadow: 0 0 0 2px white, 0 0 0 4px;
 }
 
 .activeTheme {
-  box-shadow: 0 0 0 2px white, 0 0 0 4px red;
+  box-shadow: 0 0 0 4px salmon;
+}
+
+.icon {
+  font-size: 30px;
+  padding: 5px;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  cursor: pointer;
+}
+
+.activeIcon {
+  box-shadow: 0 0 0 3px salmon;
 }

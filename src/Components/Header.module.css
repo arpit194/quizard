@@ -1,8 +1,9 @@
 .nav {
   display: flex;
   color: white;
-  padding: 5px 50px;
+  padding: 0px 50px;
   height: 60px;
+  margin: 30px 0px;
 }
 
 .brand {
