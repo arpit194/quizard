@@ -1,0 +1,82 @@
+.settings {
+  margin: auto;
+  margin-right: 0;
+  position: relative;
+}
+
+.settingsLogo {
+  font-size: 30px;
+  transition: 0.5s;
+}
+
+.logoRotate {
+  transform: rotate(90deg);
+}
+
+@keyframes settingsOpen {
+  from {
+    width: 30px;
+    opacity: 0;
+  }
+  to {
+    width: 250px;
+    opacity: 1;
+  }
+}
+
+@keyframes settingsClose {
+  from {
+    width: 250px;
+    opacity: 1;
+  }
+  to {
+    width: 30px;
+    opacity: 0;
+  }
+}
+
+.settingsContainer {
+  display: flex;
+  position: absolute;
+  width: 250px;
+  aspect-ratio: 1;
+  background: var(--white);
+  border-radius: 30px;
+  right: 0;
+  top: 60px;
+  overflow: hidden;
+}
+
+.openSettings {
+  animation: settingsOpen 0.5s;
+}
+
+.closeSettings {
+  animation: settingsClose 0.5s;
+}
+
+.settingsDisplay {
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 15px;
+  background: red;
+}
+
+.settingsControl {
+  display: flex;
+}
+
+.themeColor {
+  border-radius: 50%;
+  width: 20px;
+  aspect-ratio: 1;
+  background-color: var(--theme-green);
+}
+
+.themeColor:hover {
+  box-shadow: 0 0 0 2px red, 0 0 0 4px var(--white);
+}
+
+.activeTheme {
+  box-shadow: 0 0 0 2px red, 0 0 0 4px black;
+}
