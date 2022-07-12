@@ -45,6 +45,7 @@
   right: 0;
   top: 60px;
   overflow: hidden;
+  z-index: 100;
 }
 
 .openSettings {
@@ -59,7 +60,6 @@
   width: 100%;
   aspect-ratio: 1;
   padding: 15px;
-  background: red;
 }
 
 .settingsControl {
@@ -74,9 +74,9 @@
 }
 
 .themeColor:hover {
-  box-shadow: 0 0 0 2px red, 0 0 0 4px var(--white);
+  box-shadow: 0 0 0 2px white, 0 0 0 4px red;
 }
 
 .activeTheme {
-  box-shadow: 0 0 0 2px red, 0 0 0 4px black;
+  box-shadow: 0 0 0 2px white, 0 0 0 4px red;
 }
