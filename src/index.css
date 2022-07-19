@@ -85,7 +85,7 @@ select {
 }
 
 body {
-  background: var(--darkback);
+  background: #222;
   font-family: "Varela Round", sans-serif;
 }
 

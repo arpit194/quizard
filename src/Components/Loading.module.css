@@ -1,0 +1,58 @@
+@keyframes rotate {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes loading {
+  0% {
+    border-radius: 5px;
+  }
+  20% {
+    border-radius: 50% 5px 5px 5px;
+  }
+  40% {
+    border-radius: 50% 50% 5px 5px;
+  }
+  60% {
+    border-radius: 50% 50% 50% 5px;
+  }
+  80% {
+    border-radius: 50%;
+  }
+  100% {
+    border-radius: 5px;
+  }
+}
+
+.loadingContainer {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 250px;
+  font-weight: bold;
+  border-radius: 5px;
+  animation: 5s loading infinite ease-in-out;
+  margin: auto;
+}
+
+.loader {
+  padding: 100px;
+  transform: rotateY(0deg);
+  transform-style: preserve-3d;
+  color: white;
+  animation: 5s rotate infinite linear;
+}
+
+.loadingText {
+  color: white;
+  position: absolute;
+  font-size: 50px;
+  bottom: -100px;
+}
