@@ -1,13 +1,22 @@
 import React from "react";
 import classes from "./Header.module.css";
 import Settings from "./Settings";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { gameActions } from "../store/game";
 
 const Header = () => {
+  const dispatch = useDispatch();
+
   const themeColor = useSelector((state) => state.setting.themeColor);
+
   return (
     <div className={classes.nav} style={{ backgroundColor: `${themeColor}` }}>
-      <div className={classes.brand}>
+      <div
+        className={classes.brand}
+        onClick={() => {
+          dispatch(gameActions.setGameState("Home"));
+        }}
+      >
         <div className={classes.logo}>
           <img
             alt="quizard"

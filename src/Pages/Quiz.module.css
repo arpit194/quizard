@@ -1,0 +1,180 @@
+.quizContainer {
+  display: flex;
+  margin: auto;
+  width: 95%;
+  height: 75vh;
+  border-radius: 30px;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.question {
+  height: 40%;
+  background-color: white;
+  border-radius: 30px;
+  font-size: 30px;
+  font-weight: bold;
+  color: black;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.options {
+  height: 50%;
+  padding-top: 30px;
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+}
+
+.option {
+  background-color: white;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.option:hover {
+  background-color: #ddd;
+}
+
+.correct {
+  background-color: lightgreen;
+}
+
+.incorrect {
+  background-color: salmon;
+}
+
+.correct:hover {
+  background-color: lightgreen;
+}
+
+.incorrect:hover {
+  background-color: salmon;
+}
+
+.details {
+  background-color: white;
+  height: 10%;
+  border-radius: 30px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+.details div {
+  padding: 15px;
+}
+
+.timer {
+  border-radius: 30px;
+  margin-left: auto;
+  height: 100%;
+  aspect-ratio: 1;
+  border: 3px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nextContainer {
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 30px);
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-top: 30px;
+  border-radius: 30px;
+}
+
+.next {
+  background-color: white;
+  border-radius: 30px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 25%;
+  height: 35%;
+  box-shadow: 0 0 5px #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.next:hover {
+  background-color: #ddd;
+}
+
+.endScreen {
+  height: 100%;
+  background-color: white;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.endScreen .score {
+  margin: 15px;
+  font-size: 50px;
+  text-align: center;
+}
+
+.endDetails {
+  display: flex;
+  padding: 15px;
+  justify-content: space-around;
+}
+
+.endDetails div {
+  font-size: 30px;
+}
+
+.endControls {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 0px 30px;
+}
+
+.userName {
+  padding: 15px;
+  border-radius: 30px;
+  border: 2px solid #ccc;
+  flex: calc(50% - 30px);
+  text-align: center;
+}
+
+.save {
+  flex: calc(50% - 30px);
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.restart {
+  width: 50%;
+  padding: 15px;
+  border-radius: 30px;
+  border: none;
+  margin: auto;
+  color: white;
+  cursor: pointer;
+}

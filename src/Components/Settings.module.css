@@ -38,13 +38,13 @@
 .settingsContainer {
   display: flex;
   position: absolute;
-  width: 250px;
-  aspect-ratio: 1;
+  width: 300px;
+  height: fit-content;
   border-radius: 30px;
   right: 0;
   top: 60px;
   overflow: hidden;
-  z-index: 100;
+  z-index: 50;
   transition: 0.25s;
   background: var(--white);
   box-shadow: 0 0 5px 0px #000;
@@ -71,6 +71,8 @@
   display: flex;
   justify-content: space-between;
   font-size: 30px;
+  position: relative;
+  margin: 20px 0;
 }
 
 .themeColor {
@@ -82,11 +84,15 @@
 }
 
 .themeColor:hover {
-  box-shadow: 0 0 0 2px white, 0 0 0 4px;
+  box-shadow: 0 0 0 3px #ccc;
 }
 
 .activeTheme {
-  box-shadow: 0 0 0 4px salmon;
+  box-shadow: 0 0 0 3px #555;
+}
+
+.activeTheme:hover {
+  box-shadow: 0 0 0 3px #555;
 }
 
 .icon {
@@ -95,8 +101,41 @@
   border-radius: 50%;
   aspect-ratio: 1;
   cursor: pointer;
+  transition: 0.25s;
+}
+
+.icon:hover {
+  box-shadow: 0 0 0 3px #ccc;
+}
+
+.gameSetting {
+  width: 40px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.gameSetting:hover {
+  box-shadow: 0 0 0 3px #ccc;
+  transition: 0.25s;
+}
+
+.settingName {
+  position: absolute;
+  font-size: 20px;
+  color: #222;
+  left: 0;
+  top: -30px;
 }
 
 .activeIcon {
-  box-shadow: 0 0 0 3px salmon;
+  box-shadow: 0 0 0 3px #555;
+}
+
+.activeIcon:hover {
+  box-shadow: 0 0 0 3px #555;
 }

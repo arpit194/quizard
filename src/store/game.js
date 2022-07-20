@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  gameState: "Categories",
+  gameState: "Home",
+  loading: false,
   questions: null,
   currentQuestion: null,
   category: 0,
@@ -14,13 +15,16 @@ const gameSlice = createSlice({
     setGameState: (state, action) => {
       state.gameState = action.payload;
     },
+    setLoading: (state, action) => {
+      state.loading = action.payload;
+    },
     setCurrentQuestion: (state, action) => {
       state.currentQuestion = action.payload;
     },
     setCategory: (state, action) => {
       state.category = action.payload;
     },
-    setQuesttions: (state, action) => {
+    setQuestions: (state, action) => {
       state.questions = action.payload;
     },
   },

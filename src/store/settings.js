@@ -4,10 +4,14 @@ const initialState = {
   sound: JSON.parse(localStorage.getItem("sound")) ? false : true,
   difficulty: localStorage.getItem("difficulty")
     ? localStorage.getItem("difficulty")
-    : "Easy",
+    : "easy",
   themeColor: localStorage.getItem("themeColor")
     ? localStorage.getItem("themeColor")
     : "#264653",
+  quesNo: localStorage.getItem("quesNo")
+    ? localStorage.getItem("quesNo")
+    : "10",
+  timer: localStorage.getItem("timer") ? localStorage.getItem("timer") : "60",
 };
 
 const settingSlice = createSlice({
@@ -25,6 +29,14 @@ const settingSlice = createSlice({
     setThemeColor: (state, action) => {
       state.themeColor = action.payload;
       localStorage.setItem("themeColor", action.payload);
+    },
+    setQuesNo: (state, action) => {
+      state.quesNo = action.payload;
+      localStorage.setItem("quesNo", action.payload);
+    },
+    setTimer: (state, action) => {
+      state.timer = action.payload;
+      localStorage.setItem("timer", action.payload);
     },
   },
 });

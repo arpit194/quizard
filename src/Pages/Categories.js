@@ -1,8 +1,9 @@
 import React from "react";
 import classes from "./Categories.module.css";
-import Category from "./Category";
+import Category from "../Components/Category";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { gameActions } from "../store/game";
 
 const categories = [
   {
@@ -48,10 +49,10 @@ const categories = [
       "https://images.unsplash.com/photo-1576767969134-4318b9bd84a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Z2VvZ3JhcGh5fGVufDB8MnwwfHw%3D&auto=format&fit=crop&w=900&q=60",
   },
   {
-    id: 26,
-    name: "Celebrities",
+    id: 23,
+    name: "History",
     imageURL:
-      "https://images.unsplash.com/photo-1643756635111-ee5b18e055dc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2VsZWJyaXR5fGVufDB8MnwwfHw%3D&auto=format&fit=crop&w=900&q=60",
+      "https://images.unsplash.com/photo-1579856703027-dd3bd29d78b3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGhpc3Rvcnl8ZW58MHwyfDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60",
   },
   {
     id: 27,
@@ -72,10 +73,10 @@ const categories = [
       "https://images.unsplash.com/photo-1608889468310-1e84217c0f8d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjZ8fGNvbWljfGVufDB8MnwwfHw%3D&auto=format&fit=crop&w=900&q=60",
   },
   {
-    id: 30,
-    name: "Gadgets",
+    id: 32,
+    name: "Animation and cartoon",
     imageURL:
-      "https://images.unsplash.com/photo-1615215271299-608ada121f72?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Z2FkZ2V0c3xlbnwwfDJ8MHx8&auto=format&fit=crop&w=900&q=60",
+      "https://images.unsplash.com/photo-1593085512500-5d55148d6f0d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2FydG9vbnxlbnwwfDJ8MHx8&auto=format&fit=crop&w=900&q=60",
   },
   {
     id: 31,
@@ -84,13 +85,13 @@ const categories = [
       "https://images.unsplash.com/photo-1536098561742-ca998e48cbcc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YW5pbWV8ZW58MHwyfDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60",
   },
   {
-    id: 0,
-    name: "Random",
+    id: 1,
+    name: "Random Category",
     imageURL:
       "https://images.unsplash.com/photo-1515405295579-ba7b45403062?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cmFuZG9tfGVufDB8MnwwfHw%3D&auto=format&fit=crop&w=900&q=60",
   },
   {
-    id: 1,
+    id: 0,
     name: "Miscellaneous",
     imageURL:
       "https://images.unsplash.com/photo-1625221942340-cca5367158bf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bWlzY2VsbGFuZW91c3xlbnwwfDJ8MHx8&auto=format&fit=crop&w=900&q=60",
@@ -99,6 +100,17 @@ const categories = [
 
 const Categories = () => {
   const themeColor = useSelector((state) => state.setting.themeColor);
+  const dispatch = useDispatch();
+
+  const startQuiz = (id) => {
+    dispatch(
+      gameActions.setCategory(
+        id === 1 ? categories[Math.floor(Math.random() * 12)].id : id
+      )
+    );
+    dispatch(gameActions.setGameState("Quiz"));
+  };
+
   return (
     <div
       className={classes.categoriesContainer}
@@ -110,6 +122,7 @@ const Categories = () => {
           id={category.id}
           name={category.name}
           imageURL={category.imageURL}
+          startQuiz={startQuiz}
         />
       ))}
     </div>

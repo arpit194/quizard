@@ -15,13 +15,17 @@ import { settingActions } from "../store/settings";
 
 const colors = ["#264653", "#2a9d8f", "#e9c46a", "#f4a261", "#e76f51"];
 
+const questionNo = [5, 10, 15];
+
+const times = [30, 60, 90, 120];
+
 const Settings = () => {
   const settings = useRef();
   const [open, setOpen] = useState(false);
   const [rotate, setRotate] = useState(false);
-  const themeColor = useSelector((state) => state.setting.themeColor);
-  const difficulty = useSelector((state) => state.setting.difficulty);
-  const sound = useSelector((state) => state.setting.sound);
+  const { themeColor, difficulty, quesNo, timer, sound } = useSelector(
+    (state) => state.setting
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -56,6 +60,7 @@ const Settings = () => {
         >
           <div className={classes.settingsDisplay}>
             <div className={classes.settingsControl}>
+              <div className={classes.settingName}>Sound</div>
               {sound ? (
                 <FontAwesomeIcon
                   icon={faVolumeUp}
@@ -77,38 +82,40 @@ const Settings = () => {
               )}
             </div>
             <div className={classes.settingsControl}>
+              <div className={classes.settingName}>Difficulty</div>
               <FontAwesomeIcon
                 icon={faFaceSmile}
                 className={`${classes.icon} ${
-                  difficulty === "Easy" && classes.activeIcon
+                  difficulty === "easy" && classes.activeIcon
                 }`}
                 style={{ backgroundColor: themeColor }}
                 onClick={() => {
-                  dispatch(settingActions.setDifficulty("Easy"));
+                  dispatch(settingActions.setDifficulty("easy"));
                 }}
               />
               <FontAwesomeIcon
                 icon={faFaceMeh}
                 className={`${classes.icon} ${
-                  difficulty === "Medium" && classes.activeIcon
+                  difficulty === "medium" && classes.activeIcon
                 }`}
                 style={{ backgroundColor: themeColor }}
                 onClick={() => {
-                  dispatch(settingActions.setDifficulty("Medium"));
+                  dispatch(settingActions.setDifficulty("medium"));
                 }}
               />
               <FontAwesomeIcon
                 icon={faFaceSurprise}
                 className={`${classes.icon} ${
-                  difficulty === "Hard" && classes.activeIcon
+                  difficulty === "hard" && classes.activeIcon
                 }`}
                 style={{ backgroundColor: themeColor }}
                 onClick={() => {
-                  dispatch(settingActions.setDifficulty("Hard"));
+                  dispatch(settingActions.setDifficulty("hard"));
                 }}
               />
             </div>
             <div className={classes.settingsControl}>
+              <div className={classes.settingName}>Theme</div>
               {colors.map((color) => (
                 <div
                   key={color}
@@ -120,6 +127,40 @@ const Settings = () => {
                     dispatch(settingActions.setThemeColor(color));
                   }}
                 ></div>
+              ))}
+            </div>
+            <div className={classes.settingsControl}>
+              <div className={classes.settingName}>No. of questions</div>
+              {questionNo.map((no) => (
+                <div
+                  key={no}
+                  className={`${classes.gameSetting} ${
+                    no == quesNo && classes.activeIcon
+                  }`}
+                  style={{ backgroundColor: themeColor }}
+                  onClick={() => {
+                    dispatch(settingActions.setQuesNo(no));
+                  }}
+                >
+                  {no}
+                </div>
+              ))}
+            </div>
+            <div className={classes.settingsControl}>
+              <div className={classes.settingName}>Timer</div>
+              {times.map((time) => (
+                <div
+                  key={time}
+                  className={`${classes.gameSetting} ${
+                    time == timer && classes.activeIcon
+                  }`}
+                  style={{ backgroundColor: themeColor }}
+                  onClick={() => {
+                    dispatch(settingActions.setTimer(time));
+                  }}
+                >
+                  {time}
+                </div>
               ))}
             </div>
           </div>
