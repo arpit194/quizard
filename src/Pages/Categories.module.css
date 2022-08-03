@@ -56,3 +56,24 @@
   font-weight: bold;
   text-align: center;
 }
+
+@media only screen and (min-width: 0px) and (max-width: 480px) {
+  .categoriesContainer {
+    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 10px;
+    margin: auto;
+  }
+
+  .category {
+    border-radius: 10px;
+    background-color: #ccc;
+  }
+
+  .category span {
+    width: 90%;
+    border-radius: 5px;
+    font-size: 0.75em;
+    word-break: break-all;
+  }
+}

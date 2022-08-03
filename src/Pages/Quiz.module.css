@@ -87,6 +87,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
 }
 
 .nextContainer {
@@ -142,6 +143,10 @@
   justify-content: space-around;
 }
 
+.endQuestionNo::before {
+  content: "Correct: ";
+}
+
 .endDetails div {
   font-size: 30px;
 }
@@ -158,7 +163,7 @@
   padding: 15px;
   border-radius: 30px;
   border: 2px solid #ccc;
-  flex: calc(50% - 30px);
+  flex: 100%;
   text-align: center;
 }
 
@@ -177,4 +182,88 @@
   margin: auto;
   color: white;
   cursor: pointer;
+}
+
+@media only screen and (min-width: 0px) and (max-width: 480px) {
+  .quizContainer {
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .details {
+    border-radius: 10px;
+  }
+
+  .question {
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    height: 30%;
+  }
+
+  .option {
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 10px;
+  }
+
+  .next {
+    border-radius: 10px;
+    width: 50%;
+  }
+
+  .nextContainer {
+    border-radius: 10px;
+  }
+
+  .category {
+    display: none;
+  }
+
+  .difficulty {
+    display: none;
+  }
+
+  .quesNo::before {
+    content: "Ques ";
+  }
+
+  .timer {
+    border-radius: 5px;
+  }
+
+  .endScreen {
+    border-radius: 10px;
+  }
+
+  .endDetails {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .endCategory {
+    font-weight: bold;
+  }
+
+  .endQuestionNo::before {
+    content: "Correct: ";
+  }
+
+  .endControls {
+    gap: 10px;
+  }
+
+  .userName {
+    border-radius: 10px;
+  }
+
+  .save {
+    border-radius: 10px;
+  }
+
+  .restart {
+    border-radius: 10px;
+  }
 }

@@ -29,3 +29,18 @@
   line-height: 40px;
   letter-spacing: 10px;
 }
+
+@media only screen and (min-width: 0px) and (max-width: 480px) {
+  .nav {
+    border-radius: 10px;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .brandName {
+    margin-left: 0;
+    font-size: 30px;
+  }
+}

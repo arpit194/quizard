@@ -13,7 +13,7 @@ const correctAudio = new Audio(correct);
 const wrongAudio = new Audio(wrong);
 
 const Quiz = () => {
-  const { themeColor, difficulty, quesNo, timer } = useSelector(
+  const { themeColor, difficulty, quesNo, timer, sound } = useSelector(
     (state) => state.setting
   );
   const { category, questions, currentQuestion } = useSelector(
@@ -59,10 +59,10 @@ const Quiz = () => {
     if (decode(currentQuestion.correct_answer) === e.target.innerHTML) {
       setPoints(points + 1);
       e.target.classList.add(classes.correct);
-      correctAudio.play();
+      sound && correctAudio.play();
     } else {
       e.target.classList.add(classes.incorrect);
-      wrongAudio.play();
+      sound && wrongAudio.play();
     }
 
     if (questionNo < quesNo) {
@@ -113,7 +113,7 @@ const Quiz = () => {
         gameEnd();
       }
       if (time == 6) {
-        clockAudio.play();
+        sound && clockAudio.play();
       }
       if (time > 0) {
         timerRef.current.innerHTML = time - 1;
@@ -159,7 +159,7 @@ const Quiz = () => {
           </div>
           <div className={classes.score}>Score: {points}</div>
           <div className={classes.endControls}>
-            <input className={classes.userName} />
+            <input className={classes.userName} placeholder="Enter Username" />
             <button className={classes.save}>Save Score</button>
             <button
               className={classes.restart}
@@ -187,7 +187,7 @@ const Quiz = () => {
             <div className={classes.quesNo}>
               {currentQuestion && questionNo + "/" + quesNo}
             </div>
-            <div className={classes.quesNo}>Score: {points}</div>
+            <div className={classes.score}>Score: {points}</div>
             {error && <div>{error}</div>}
             <div
               className={classes.timer}
